@@ -14,4 +14,6 @@ export const colors = {
   secondary: "#C4C4C4",
   white: "#ffffff",
   black: "#000000",
+  success: "#50ba9e",
+  danger: "#660000"
 }
