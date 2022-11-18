@@ -3,12 +3,10 @@ import * as S from "./styles";
 import { LoadingComponent, ButtonComponent } from "components";
 import { FcDatabase, FcUndo } from "react-icons/fc";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { apiMessage, apiTopic } from "services/data";
+import { apiMessage } from "services/data";
 import { toast } from "react-toastify";
 import { AxiosError } from "axios";
-import { IMessageForm } from "interfaces/message.interface";
-import { IErrorResponse } from "interfaces/user.interface";
-import { ITopicData } from "interfaces/topic.interface";
+import { IErrorResponse } from "interfaces/user.interface";;
 
 const MessageStore = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -50,7 +48,7 @@ const MessageStore = () => {
   async function handleCheck(e: string) {
     let topic = formData.topic ? formData.topic : []
     if (formData.topic?.includes(Number(e))) {
-      topic = formData.topic.filter((i) => i !== Number(e))
+      topic = formData.topic.filter((i: number) => i !== Number(e))
     } else {
       topic.push(Number(e))
     }
@@ -60,7 +58,7 @@ const MessageStore = () => {
   useEffect(() => {
     const loadTopics = async () => {
       try {
-        const response = await apiTopic.index()
+        const response = await apiMessage.index()
         setTopics(response.data)
       } catch (error) {
         console.log(error);
@@ -72,7 +70,7 @@ const MessageStore = () => {
           const response = await apiMessage.show(id);
           setFormData({
             ...response.data,
-            topic: response.data.messageTopic?.map((i) => i.id)
+            topic: response.data.messageTopic?.map((i: { id: any; }) => i.id)
           });
         } catch (error) {
           console.log(error);
