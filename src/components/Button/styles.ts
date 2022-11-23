@@ -37,4 +37,3 @@ export const Botao = styled.button<ButtonProps>`
   }
   ${(props) => colorVariations[props.bgColor || "default"]}
 `
-`

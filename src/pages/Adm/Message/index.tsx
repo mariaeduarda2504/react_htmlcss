@@ -84,7 +84,7 @@ const AdmMessage = () => {
                       <td>{item.user?.name}</td>
                       <td>{item.title}</td>
                       <td>{item.message}</td>
-                      <td>{item.messageTopic?.map((i) => `${i.name} `)}</td>
+                      <td>{item.messageTopic?.map((i: { name: any; }) => `${i.name} `)}</td>
                       <td>
                         <ButtonComponent
                           type="button"

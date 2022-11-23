@@ -6,7 +6,9 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { apiMessage } from "services/data";
 import { toast } from "react-toastify";
 import { AxiosError } from "axios";
-import { IErrorResponse } from "interfaces/user.interface";;
+import { IErrorResponse } from "interfaces/user.interface";
+import { IMessageForm } from "interfaces/message.interface";
+import { ITopicData } from "interfaces/topic.interface";
 
 const MessageStore = () => {
   const [isLoading, setIsLoading] = useState(true);
